@@ -6,6 +6,7 @@ class Validator
 {
 	private static $_errors = [];
 	private static $_errorMessages;
+	private static $_isError;
 	private static $_fieldCaption;
 
 	public static function check ($fields, $rules)
@@ -13,17 +14,18 @@ class Validator
 
 		self::$_errorMessages = Language::get('validator');
 		self::$_fieldCaption  = Language::get('fields');
-		self::$_errors = [];
+		self::$_errors        = [];
+		self::$_isError       = [];
 		foreach ($fields as $field => $value) {
 			$rule = $rules[$field];
-			if (!($rule == '')) {
+			if (strlen($rule) > 0) {
 				$check = self::_checkValid($value, $rules[$field], $field);
-				dump($check);
-				if (strlen($check) !==0) {
+				if (strlen($check) !== 0) {
 					self::$_errors[$field] = $check;
 				}
 			}
 		}
+
 		return self::$_errors;
 	}
 
@@ -45,9 +47,9 @@ class Validator
 			$ruleFunc = '_is' . ucfirst($ruleName);
 			array_unshift($ruleParts, $value);
 			array_unshift($ruleParts, $field);
-			d($ruleFunc);
 			$error = call_user_func_array([$className, $ruleFunc], $ruleParts);
-			if ($error !== TRUE) {
+			if ($error !== TRUE && !in_array($field, self::$_isError)) {
+				self::$_isError[] = $field;
 				return $error;
 			}
 		}
@@ -67,15 +69,16 @@ class Validator
 
 		$field = self::$_fieldCaption[$field];
 		$error = self::_getError('required', [$field]);
-		return ($value == '' || $value === NULL || strlen($value) <= 0) ? $error : '';
+
+		return ($value == '' || $value === NULL || strlen($value) <= 0) ? $error : TRUE;
 	}
 
-	private static function _isNumber ($field, $value)
+	private static function _isInteger ($field, $value)
 	{
 		$field = self::$_fieldCaption[$field];
-		$error = $error = self::_getError('number', [$field]);
+		$error = $error = self::_getError('integer', [$field]);
 
-		return (!is_numeric($value)) ? $error : TRUE;
+		return (!is_numeric($value) || gettype($value) !== 'integer') ? $error : TRUE;
 	}
 
 	private static function _isString ($field, $value)
@@ -83,20 +86,22 @@ class Validator
 		$field = self::$_fieldCaption[$field];
 		$error = self::_getError('string', [$field]);
 
-		return (!is_string($value)) ? $error : TRUE;
+		return (!is_string($value) || gettype($value) !== 'string') ? $error : TRUE;
 	}
 
 	private static function _isMax ($field, $value, $max)
 	{
 		$field = self::$_fieldCaption[$field];
 		$error = self::_getError('max', [$field, $max]);;
+
 		return (strlen($value) > $max) ? $error : TRUE;
 	}
 
 	private static function _isMin ($field, $value, $min)
 	{
 		$field = self::$_fieldCaption[$field];
-		$error = self::_getError('min', [$field,$min]);
+		$error = self::_getError('min', [$field, $min]);
+
 		return (strlen($value) < $min) ? $error : TRUE;
 	}
 
@@ -114,18 +119,32 @@ class Validator
 	{
 		$field = self::$_fieldCaption[$field];
 		$error = self::_getError('url', [$field]);
+
 		return (!filter_var($value, FILTER_VALIDATE_URL)) ? $error : TRUE;
 	}
 
-	private static function _isImage($field,$value)
+	private static function _isImage ($field, $value)
 	{
-		echo 'image func';
-		d([$field,$value]);
+		$field      = self::$_fieldCaption[$field];
+		$error      = self::_getError('image', [$field]);
+		$extensions = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'bmp', 'tiff'];
+		$value      = explode('.', $value);
+		$value      = end($value);
+
+		return !in_array($value, $extensions) ? $error : TRUE;
 	}
 
-	private static function _isMimes($field,$value,$format)
+	private static function _isMimes ($field, $value, $format)
 	{
-		d($format);
+
+		$field  = self::$_fieldCaption[$field];
+		$error  = self::_getError('mimes', [$field, $format]);
+		$format = explode(',', $format);
+		$value  = explode('.', $value);
+		$value  = end($value);
+
+		return !in_array($value, $format) ? $error : TRUE;
+
 	}
 
 }
