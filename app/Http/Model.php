@@ -200,7 +200,14 @@ class Model
 	public function validate ()
 	{
 		Validator::check($this->getFields(), $this->_rules);
-		return  count(Validator::error()) ===0 ? TRUE  :  FALSE;
+		$errors=Validator::error();
+		$errorCount=0;
+		foreach($errors as $error)
+		{
+			$error !==TRUE ? $errorCount++ : TRUE;
+		}
+
+		return  $errorCount ===0 ? TRUE  :  FALSE;
 	}
 
 	# Is Object New

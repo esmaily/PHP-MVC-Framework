@@ -23,10 +23,8 @@ class AdvertiseController extends Controller
 	}
 
 	# store new Advertise
-	public function storeAction ()
+	public function storeAction (Request $request)
 	{
-		$request= Request::createFromGlobals();
-
 		$code              = shuffleKey();
 		$poster            = $request->file('poster');
 		$advertise         = new Advertise();
@@ -37,12 +35,12 @@ class AdvertiseController extends Controller
 		$validate          = $advertise->validate();
 		$errors=Validator::error();
 		if ($validate) {
-			if($poster) $request->move('advertises', $poster);
+			if($poster) $request->store('advertises', $poster);
 			$video             = $request->file('video');
-			if($video) $request->move('advertises', $video);
+			if($video) $request->store('advertises', $video);
 			sleep(1);
 			$pod              = $request->file('pod');
-			if($pod) $request->move('advertises', $pod);
+			if($pod) $request->store('advertises', $pod);
 			$advertise->save();
 			if ($request->post('type') == 'business'):
 				$advertise = [

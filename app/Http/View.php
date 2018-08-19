@@ -10,8 +10,8 @@ class View {
 	{
 		$data['app'] = [
 			'user' => Session::get('user'),
-			'baseUrl' =>URL['BASE'],
-			'basePath' =>PATH['PUBLIC'],
+			'baseUrl' =>BASE,
+			'publicUrl' =>URL['PUBLIC'],
 			'storage'=>ENV['STORAGE'],
 		];
 		extract($data);
@@ -25,7 +25,7 @@ class View {
 			return $data['app'];
 		}));;
 		$twig->addFunction(new \Twig_SimpleFunction('storage',function ($path,$name){
-			return PATH['PUBLIC'] ."storage/{$path}/{$name}";
+			return URL['PUBLIC'] ."storage/{$path}/{$name}";
 		}));
 		$twig->addFunction(new \Twig_SimpleFunction('errors',function ($key){
 			return Session::get($key);

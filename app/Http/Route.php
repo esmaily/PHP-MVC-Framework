@@ -22,16 +22,19 @@ class Route
 			$controllerName = 'App\\Controllers\\' . ucfirst($urlParts[0]);
 			$actionName     = (isset($urlParts[1]) ? $urlParts[1] : 'index') . 'Action';
 			$params         = $checkedRoute['params'];
+			if (count($params) == 0) {
+				$params[0] = Request::createFromGlobals();
+			}
 
 			$ctrl = new $controllerName();
 
 			if (method_exists($ctrl, $actionName)):
-//				d([
-//				'Controller'=>$ctrl,
-//				'Action'=>$actionName,
-//				'Params'=>$params
-//			]);
-//			func_get_args();
+				//				d([
+				//				'Controller'=>$ctrl,
+				//				'Action'=>$actionName,
+				//				'Params'=>$params
+				//			]);
+				//			func_get_args();
 
 				call_user_func_array([$ctrl, $actionName], $params);
 			else:

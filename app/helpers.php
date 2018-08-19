@@ -6,7 +6,7 @@ use App\Http\Session;
 
 function d ($data = '')
 {
-	echo "<pre class='debug'>";
+	echo "<pre style='background: #333;color: #eee;padding: 10px;direction: ltr;text-align: left;'>";
 	print_r($data);
 	echo "</pre>";
 
@@ -14,7 +14,7 @@ function d ($data = '')
 
 function dd ($data = '')
 {
-	echo "<pre class='debug'>";
+	echo "<pre style='background: #333;color: #eee;padding: 10px;direction: ltr;text-align: left;'>";
 	print_r($data);
 	echo "</pre>";
 	die();
@@ -22,7 +22,7 @@ function dd ($data = '')
 
 function dump ($data = '')
 {
-	echo "<pre class='debug'>";
+	echo "<pre style='background: #333;color: #eee;padding: 10px;direction: ltr;text-align: left;'>";
 	var_dump($data);
 	echo "</pre>";
 
@@ -155,7 +155,7 @@ function redirect ($route, $params = NULL)
 	$route = $route === '/' ? '' : $route;
 	if ($r) {
 		Session::set('bag', $params);
-		header("location: " . URL['BASE'] . '/' . $route);
+		header("location: " . BASE . '/' . $route);
 		exit();
 	} else {
 		throw new \Exception("redirect \error {{ $route }} URL !", 1);

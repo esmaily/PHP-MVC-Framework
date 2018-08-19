@@ -31,6 +31,7 @@ class Validator
 
 	public static function error ()
 	{
+
 		return self::$_errors;
 	}
 

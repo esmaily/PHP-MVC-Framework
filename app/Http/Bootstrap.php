@@ -15,9 +15,10 @@ class Bootstrap
 
 	public function run ()
 	{
-		$request    = Request::createFromGlobals();
-		$getRequest = $request->get('url');
-		$url        = $getRequest ?? '/';
+//		$request    = Request::createFromGlobals();
+//		$getRequest = $request->get('url');
+		$url = $_GET['url'] ?? '/';
+//		$url        = $getRequest ?? '/';
 		$url        = strtolower($url);
 		Route::route($url);
 	}

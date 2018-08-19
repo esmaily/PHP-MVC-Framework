@@ -4,6 +4,20 @@ namespace App\Http;
 
 class Cookie
 {
+
+	private static $_cookie;
+	public function __construct ($key,$value=NULL,$lifeTime=NULL)
+	{
+		self::$_cookie=$_COOKIE;
+		if($value==NULL){
+			return self::get($key);
+		}elseif ($key && $value !=$value)
+		{
+			self::set($key,$value,$lifeTime);
+		}
+		return FALSE;
+	}
+
 	public static function set ($key,$value,$lifeTime=0)
 	{
 		$lifeTime += time();
@@ -11,10 +25,7 @@ class Cookie
 	}
 	public static function get ($key)
 	{
-		if(isset($_COOKIE[$key])){
-			return $_COOKIE[$key];
-		}
-		return FALSE;
+		return self::$_cookie[$key] ?? FALSE;
 	}
 
 	public static function flush ($key)

@@ -27,9 +27,7 @@
         </div>
         <div class = "page-body">
 
-            <div class = "alert">
-                {{ errors.title }}
-            </div>
+
             <form action = "{{ app.baseUrl }}advertise/store" class = "add-form needs-validation" id = "add_advertise_form"
                   method = "post" enctype = "multipart/form-data" novalidate>
                 <input type = "hidden" name = "type" value = "" id = "ad_type">

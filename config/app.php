@@ -2,17 +2,16 @@
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(__FILE__)) . DS);
+define('BASE',"{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['SERVER_NAME']}" . str_replace('public/index.php', '', $_SERVER['SCRIPT_NAME']));
 
 # Url Defines
 define('URL', [
-	'BASE'   => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . str_replace('public/index.php', '', $_SERVER['SCRIPT_NAME']),
-	'PUBLIC' => ROOT . 'public' . DS,
-
-]);
+	'PUBLIC'   =>BASE .'public/',
+	]);
 
 # Path Defines
 define('PATH', [
-	'PUBLIC'     => URL['BASE'] . 'public/',
+	'PUBLIC' => ROOT . 'public' . DS,
 ]);
 # View Defines
 define('VIEW', [
@@ -22,9 +21,10 @@ define('VIEW', [
 
 # Env Defines
 define('ENV', [
-	'DATABASE'     => ROOT . 'resources' . DS . 'database.json',
-	'LANG_PATH'    => ROOT . 'resources' . DS . 'lang' . DS,
-	'LANG_DEF' => 'fa',
-	'STORAGE'      => PATH['PUBLIC'] . 'storage' . DS,
-	'BACK'=>$_SERVER['HTTP_REFERER']
+	'NOW'       => date('Y-m-d_H-i-s'),
+	'DATABASE'  => ROOT . 'resources' . DS . 'database.json',
+	'LANG_PATH' => ROOT . 'resources' . DS . 'lang' . DS,
+	'LANG_DEF'  => 'fa',
+	'STORAGE'   => PATH['PUBLIC'] . 'storage' . DS,
+	'BACK'      => $_SERVER['HTTP_REFERER'] ?? '/',
 ]);

@@ -15,8 +15,8 @@ class Advertise extends Model
 			'id'=>['default'=>NULL],
 			'title'=>['rules'=>'required|string|min:3'],
 			'type'=>['rules'=>'required|string'],
-			'poster'=>['rules'=>'required|image|max:2048|mimes:jpg,jpeg,png,gif'],
-			'code'=>['rules'=>'required|integer'],
+			'poster'=>['rules'=>'required|image|max:2048|mimes:jpg,,png,gif'],
+			'code'=>['rules'=>'required'],
 		]);
 	}
 }

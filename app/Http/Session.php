@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http;
 
 class Session
@@ -7,38 +8,39 @@ class Session
 
 	public static function init ()
 	{
-		if(!session_id()){
+		if (!session_id()) {
 			session_start();
 			self::$_sessionId = session_id();
+			//			unset($_SESSION);
 		}
 	}
-	public static function is($key)
+
+	public static function is ($key)
 	{
-			 return $key ?: FALSE;
+		return $_SESSION[$key] ?: FALSE;
 	}
-	public static function set ($key,$value)
+
+	public static function set ($key, $value)
 	{
-		if(!isset($_SESSION[$key])){
-			return $_SESSION[$key]=$value;
-		}
+		return $_SESSION[$key] ?? $_SESSION[$key] = $value;
 	}
+
 	public static function get ($key)
 	{
-		if(isset($_SESSION[$key])){
-			return $_SESSION[$key];
-		}
-		return FALSE;
+		return $_SESSION[$key] ?? FALSE;
 	}
 
 	public static function flush ($key)
 	{
-		$value = isset($_SESSION[$key]) ? self::get($key) : [] ;
+		$value = isset($_SESSION[$key]) ? self::get($key) : [];
 		unset($_SESSION[$key]);
+
 		return $value;
 	}
+
 	public static function clear ()
 	{
-			session_destroy();
+		session_destroy();
 	}
 
 }

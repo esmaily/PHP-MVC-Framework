@@ -26,7 +26,7 @@ class Controller
 		$route         = $route === '/' ? '' : $route;
 		if ($r) {
 			Session::set('viewBag', $this->viewBag);
-			header("location: " . URL['BASE'] . '/' . $route);
+			header("location: " . BASE. '/' . $route);
 			exit();
 		} else {
 			throw new \Exception("redirect \error {{$route}} URL !", 1);

@@ -13,12 +13,12 @@ class Request
 		$_upload = [];
 	private static $singleton;
 
-	public function __construct ($get,$post,$file,$request)
+	public function __construct ($get, $post, $file, $request)
 	{
-		$this->_get  =& $get;
-		$this->_post =& $post;
-		$this->_file =& $file;
-		$this->_all  =& $request;
+		$this->_get  = $get;
+		$this->_post = $post;
+		$this->_file = $file;
+		$this->_all  = $request;
 		unset($_GET);
 		unset($_POST);
 		unset($_FILES);
@@ -29,8 +29,9 @@ class Request
 	public static function createFromGlobals ()
 	{
 		if (!isset(self::$singleton)) {
-			self::$singleton = new static($_GET,$_POST,$_FILES,$_REQUEST);
+			self::$singleton = new static($_GET, $_POST, $_FILES, $_REQUEST);
 		}
+
 		return self::$singleton;
 	}
 
@@ -76,38 +77,38 @@ class Request
 		}
 	}
 
-	public function store ($name = NULL)
-	{
-		if (!$name) {
-			$name = ENV['STORAGE'] . $this->_upload['name'];
-			$file = $this->move('path', $name);
-			if ($file) {
-				echo 'storage' . DIRSEP . $this->_upload['name'];
-			}
-		} elseif ($name) {
-			$path     = ENV['STORAGE'];
-			$tempName = explode('.', $this->_upload['name']);
-			$tempPath = explode('/', $name);
-			$ext      = '.' . end($tempName);
-			if ($tempPath[0] == NULL) {
-				array_shift($tempPath);
-			}
-			$basename = $this->check(end($tempPath) . $ext);
-			for ($i = 0; $i < (count($tempPath) - 1); $i++) {
-				if (!is_dir($path . $tempPath[$i])) {
-					mkdir($path . $tempPath[$i]);
-				}
-				$path .= $tempPath[$i] . DS;
-			}
-			if (is_dir($path)) {
-				//				$//				$file = move_uploaded_file($this->_upload['temporary_path'], $path . $basename);
-				$file = $this->move('path', $basename);
-				if ($file) {
-					echo $name . $ext;
-				}
-			}
-		}
-	}
+	//	public function store ($name = NULL)
+	//	{
+	//		if (!$name) {
+	//			$name = ENV['STORAGE'] . $this->_upload['name'];
+	//			$file = $this->move('path', $name);
+	//			if ($file) {
+	//				echo 'storage' . DIRSEP . $this->_upload['name'];
+	//			}
+	//		} elseif ($name) {
+	//			$path     = ENV['STORAGE'];
+	//			$tempName = explode('.', $this->_upload['name']);
+	//			$tempPath = explode('/', $name);
+	//			$ext      = '.' . end($tempName);
+	//			if ($tempPath[0] == NULL) {
+	//				array_shift($tempPath);
+	//			}
+	//			$basename = $this->check(end($tempPath) . $ext);
+	//			for ($i = 0; $i < (count($tempPath) - 1); $i++) {
+	//				if (!is_dir($path . $tempPath[$i])) {
+	//					mkdir($path . $tempPath[$i]);
+	//				}
+	//				$path .= $tempPath[$i] . DS;
+	//			}
+	//			if (is_dir($path)) {
+	//				//				$//				$file = move_uploaded_file($this->_upload['temporary_path'], $path . $basename);
+	//				$file = $this->move('path', $basename);
+	//				if ($file) {
+	//					echo $name . $ext;
+	//				}
+	//			}
+	//		}
+	//	}
 
 	public function is ($request)
 	{
@@ -125,13 +126,12 @@ class Request
 		return $name5;
 	}
 
-	public function move ($path, $name)
+	public function store ($path,$name)
 	{
-		$path = ENV['STORAGE'] . str_replace('/', '\\', $path) . '\\';
+		$path = ENV['STORAGE'] . $path . DS;
 		if (is_dir($path)) {
 			return move_uploaded_file($this->_upload['temporary_path'], $path . $name) ?: TRUE;
 		}
-
 		return FALSE;
 	}
 }
