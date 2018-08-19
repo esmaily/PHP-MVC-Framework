@@ -1,0 +1,175 @@
+{% extends "master.twig" %}
+
+{% block content %}
+    <div class = "add-new-business">
+        <div class = "page-header">
+            <div class = "row">
+                <p class = "title text-right  col-md-12 col-sm-8" style = "margin: 0;font-style: italic;">
+                    {% if(advertise.type)=='business' %}
+                        <span>کسب و کار</span>
+                    {% else %}
+                        <span>نیازمندی</span>
+                    {% endif %} /
+                    {{ category(details.category) }} /
+                    {{ advertise.title }}
+                </p>
+            </div>
+        </div>
+        <div class = "page-body ad-show-box">
+            <div class = "row">
+                <div class = "col-md-7">
+                    <div class = "show-header">
+                        <h5 class = "text-right title">{{ advertise.title }}</h5>
+                    </div>
+                    <div class = "show-content">
+                        <br>
+                        {% if(details.category) !=null %}
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <div class = "row">
+                                        <p class = "col-md-1 text-right " style = "padding: 0;font-weight: bold"> نوع : </p>
+
+                                        <p class = "col-md-11 text-right" style = "padding:0 4px ;">
+                                            {{ category(details.category) }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if(details.land) !=null %}
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <div class = "row">
+                                        <p class = "col-md-1 text-right " style = "padding: 0;font-weight: bold"> متراژ  : </p>
+                                        <p class = "col-md-11 text-right" style = "padding:0 4px ;direction: ltr">
+                                            <span>{{ details.land }}</span>
+                                            <span>متر</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if(details.price) !=null %}
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <div class = "row">
+                                        <p class = "col-md-1 text-right " style = "padding: 0;font-weight: bold"> قیمت
+                                            : </p>
+                                        <p class = "col-md-11 text-right" style = "padding:0 4px ;">
+                                            {{ details.price }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <p class = "text-right item-title">راه های ارتباطی :</p>
+                        <div class = "row">
+                            {% if(details.contact_us.website) !=null %}
+                                <div class = "col-md-6">
+                                    <div class = "row">
+                                        <p class = "col-md-1"><i class = "fa fa-internet-explorer"></i></p>
+                                        <p class = "col-md-10">
+                                            <a href = "{{ details.contact_us.website }}" target = "_blank">
+                                                {{ details.contact_us.website }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if(details.contact_us.email) !=null %}
+                                <div class = "col-md-6">
+                                    <div class = "row">
+                                        <p class = "col-md-1"><i class = "fa fa-envelope"></i></p>
+                                        <p class = "col-md-10">
+                                            <a href = "mailto:{{ details.contact_us.email }}">
+                                                {{ details.contact_us.email }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class = "row">
+                            {% if(details.contact_us.phone) !=null %}
+                                <div class = "col-md-6">
+                                    <div class = "row">
+                                        <p class = "col-md-1"><i class = "fa fa-phone"></i></p>
+                                        <p class = "col-md-10">
+                                            <a href = "tel:{{ details.contact_us.phone }}" target = "_blank">
+                                                {{ details.contact_us.phone }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if(details.contact_us.telegram) !=null %}
+                                <div class = "col-md-6">
+                                    <div class = "row">
+                                        <p class = "col-md-1"><i class = "fa fa-telegram"></i></p>
+                                        <p class = "col-md-10">
+                                            <a target = "_blank"
+                                               href = "https://telegram.me/{{ details.contact_us.telegram }}">
+                                                {{ details.contact_us.telegram }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        {% if(details.contact_us.address) !=null %}
+                            <div class = "row">
+                                <div class = "col-md-12">
+                                    <div class = "row">
+                                        <p class = "col-md-1 text-center" style = "padding: 0;"><i
+                                                    class = "fa fa-map-marker"></i></p>
+                                        <p class = "col-md-11 text-right" style = "padding:0 4px ;">
+                                            {{ details.contact_us.address }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class = "row">
+                            <br>
+                            <p class = "text-justify">
+                                {{ details.description }}
+                            </p>
+                        </div>
+                        {% if(details.media.pods) !=null %}
+                            <p class = "text-right item-title">توضیحات به صورت صدا : </p>
+                            <audio class = "ad-audio" controls>
+                                <source src = "{{ storage('advertises',details.media.pods) }}">
+                            </audio>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class = "col-md-5">
+                    <figure class = "figure">
+                        <img src = "{{ storage('advertises',advertise.poster) }}" class = "img-thumbnail figure-img"
+                             alt = "">
+                        <figcaption class = "figure-caption ">
+                            <div class = "row">
+                                <div class = "col-md-4">
+                                    <p class = "text-center">لینک اشتراک : </p>
+                                </div>
+                                <div class = "col-md-8">
+                                    <a target = "_blank"
+                                       href = "{{ app.bassUrl }}/{{ advertise.type }}/{{ advertise.code }}" class = "">
+                                        {{ app.bassUrl }}/{{ advertise.type }}/{{ advertise.code }}
+                                    </a>
+                                </div>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    {% if(details.media.videos) !=null %}
+                        <video class = "ad-video" controls poster = "{{ storage('advertises',advertise.poster) }}">
+                            <source src = "{{ storage('advertises',details.media.videos) }}" type = "video/mp4">
+                        </video>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

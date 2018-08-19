@@ -1,0 +1,324 @@
+/*
+____________________________________
+Author:Seyed Jaffar Esmaili
+Phone:09145985243
+Blog:seyed-lock.ir
+Github:@esmaily
+____________________________________
+--------------------
+    Install Fonts
+--------------------
+*/
+@font-face{
+    font-family: 'IRANSans';
+    font-size: 16px;
+    font-weight: normal;
+    src: url('../fonts/IRANSans_0.ttf') format('truetype');
+}
+
+/*
+--------------------
+   css reset
+--------------------
+*/
+*{
+    box-sizing: border-box;
+    /*margin: 0 !important;*/
+    padding: 0;
+}
+.row{
+    margin:0 !important;
+}
+body{
+    width: 100%;
+
+    direction: rtl;
+    font-family: IRANSans;
+}
+
+.img-responsive{
+    width: 100%;
+    height: auto;
+
+}
+.figure{
+    background:#f7f7f7;!important;
+    border:0;
+}
+.dz-hidden-input{
+    overflow: hidden;
+}
+/*
+--------------------
+    Wrap Styles
+--------------------
+*/
+.wrap{
+    /*padding:0;*/
+    width: 100%;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+/*
+--------------------
+    Header Styles
+--------------------
+*/
+
+.header{
+    background-color: #005b7b;
+    padding: 10px;
+}
+
+.header .alias h1{
+    text-align: right;
+    font-size: 35px;
+    color: #fff;
+}
+
+.header .alias h3{
+    text-align: right;
+    font-size: 16px;
+    color: #b3d1ce;
+}
+
+.header .alias .logo-text{
+    padding: 5% 0;
+}
+
+.header .base-line{
+    padding-top: 2%;
+    text-align: center;
+}
+.header a:hover{
+    text-decoration: none;
+}
+
+.top-nav .list-inline .list-inline-item a{
+    color: #fff;
+    display: block;
+    padding: 5px;
+    transition: color 600ms ease;
+    text-decoration: none;
+}
+
+.top-nav .list-inline .list-inline-item a:hover{
+    color: #ffc62a;
+}
+
+.top-nav .list-inline .list-inline-item a .fa{
+    font-size: 22px;
+}
+.header .base-line .search-btn{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.header .base-line .search-input{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+/*
+--------------------
+    Main Styles
+--------------------
+*/
+.main{
+    /*background: #eee;*/
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 2% 0;
+    text-align: right;
+}
+/*
+--------------------
+    Advertise Styles
+--------------------
+*/
+.advertises{
+    padding-bottom:3% ;
+}
+.adv-item{
+    /*margin-bottom:1% !important;*/
+    padding:5px;
+    float: right;
+    transition:box-shadow 500ms ease;
+}
+.adv-item:hover{
+    box-shadow:0 1px 2px 1px #c5c5c5;
+}
+.adv-item .adv-content{
+    background: #f8f8f8;
+    border: 1px solid #c7c7c7;
+}
+.adv-item .adv-content .card-body{
+    padding:0.50rem;
+}
+.adv-item .adv-content .card-body .card-text span{
+    color: #666;
+}
+#main .def-section {
+    background:#f6f6f6;
+    margin-bottom:3% !important;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+.main .def-section .list-group .list-group-item{
+    border-top:0; !important;
+    border-right:0; !important;
+    border-left:0;
+    background: transparent;
+    font-size:15px;
+}
+.main .def-section .list-group .list-group-item:last-child{
+    border:0;
+}
+.main .def-section-header{
+    padding:1% 0;
+}
+.main .def-section-header .title{
+    padding-right:10px;
+    padding-bottom:10px;
+    border-bottom:4px solid #ffc62a;
+    display: inline-block;
+    width: 15%;
+}
+.main .def-section-footer{
+    text-align: center;
+    padding-top: 3%;
+}
+#contact-us .content .row .col-md-10{
+    text-align: center;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+#contact-us .content .row .col{
+    /*padding:0;*/
+}
+#contact-us .form-contact .form-group{
+    padding:15px 0;
+}
+/*
+--------------------
+    Footer Styles
+--------------------
+*/
+
+.footer{
+    /*padding: 10px;*/
+    background-color: #005b7b;
+}
+.footer .yield .col-md-6{
+    padding:2% 5%;
+}
+.footer .list-group{
+    background-color: #005b7b;
+    border: 0;
+}
+.footer .list-group .list-group-item{
+    text-align: right;
+    border: 0;
+    background-color: #005b7b;
+    color: #fff;
+}
+.footer .list-group .list-group-item p{
+    font-size:14px;
+}
+/*----------------------social styles   */
+.social-fallow{
+    padding-top: 2% !important;
+}
+.social-fallow .list-inline-item{
+    transition:transform 400ms ease-in;
+}
+.social-fallow .list-inline-item a{
+    color: #fff;
+    font-size:35px;
+    padding:5px;
+}
+.social-fallow .list-inline-item a:hover{
+    color: #19dce0;
+}
+.social-fallow .list-inline-item:hover {
+    /*padding:10px 7px 0 7px;*/
+    transform: translateY(5px);
+}
+/*----------------------copyright styles   */
+.copyright{
+    padding:1% 2%;
+    background-color: #024861;
+}
+.copyright p{
+    color:#fff;
+    padding:10px 0;
+    font-size:14px;
+}
+
+/*--------------------------------Start Add Page Styles------------------*/
+.add-new-business{
+
+}
+.page-header{
+    background: #f8f8f8;
+    padding:6px;
+    -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;
+    border-right:8px solid #ffc62a;
+}
+#by-business-plan{
+    display: none;
+}
+.page-header .title{
+    line-height:35px;
+    margin:0;
+}
+.page-body{
+    padding:2% 0;
+}
+.add-new-business form .form-group{
+    padding:5px 0;
+}
+.add-new-business form  label{
+    padding:8px 0;
+}
+.add-new-business .form-inline{
+    /*display: inline-block;*/
+}
+.advertise-poster{
+    height: 180px;
+}
+/*--------------------------------Start Show Advertise Page  Styles------------------*/
+.ad-show-box{
+    background: #f8f8f8;
+    margin-top:2%;
+}
+.ad-show-box .show-header .title{
+    padding: 10px ;
+    /*background-color: #f5f5f5;*/
+    box-shadow:1px 1px 3px 0px #d2d2d2;
+}
+.ad-show-box .show-content .fa{
+    font-size:18px;
+    color:#878787;
+}
+.ad-show-box .figure .figure-img{
+    min-width: 380px;
+}
+.ad-show-box .figure .figure-caption{
+    background: #f2f2f2;
+    padding:15px;
+}
+#main .ad-show-box .figure .figure-caption p{
+    margin:0 !important;
+}
+.ad-show-box .item-title{
+    font-weight:bolder;
+    font-size:18px;
+}
+.ad-show-box .ad-video{
+    height: 400px;
+    width: 100%;
+}
+.ad-show-box .ad-audio{
+    height:50px;
+    width: 100%;
+}

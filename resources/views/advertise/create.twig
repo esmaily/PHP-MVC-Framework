@@ -1,0 +1,153 @@
+{% extends "master.twig" %}
+{% import 'helpers.twig' as HP %}
+{% block content %}
+    <div class = "add-new-business">
+        <div class = "page-header">
+            <div class = "row">
+                <h4 class = "title text-right col-md-2 col-sm-4">ثبت آگهی </h4>
+                <form action = "#" name = "add-type-notice" class = "form-inline col-md-10 col-sm-8">
+                    <div class = "form-row">
+                        <div class = "col">
+                            <select name = "type" onchange = "__app.addCustomAdvertise(this.value)"
+                                    class = "form-control" title = "Please Select Notice">
+                                <option value = "business">کسب و کار</option>
+                                <option value = "needed">نیازمندی</option>
+                            </select>
+                        </div>
+                        <div class = "col">
+                            <select id = "categoryByAdvertise" name = "type"
+                                    onchange = "__app.categoryByAdvertise(this.value)" class = "form-control"
+                                    title = "Please Select Notice">
+
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class = "page-body">
+
+            <div class = "alert">
+                {{ errors.title }}
+            </div>
+            <form action = "{{ app.baseUrl }}advertise/store" class = "add-form needs-validation" id = "add_advertise_form"
+                  method = "post" enctype = "multipart/form-data" novalidate>
+                <input type = "hidden" name = "type" value = "" id = "ad_type">
+                <input type = "hidden" name = "category" value = "" id = "ad_catergory">
+
+                <div class = "form-row">
+                    <div class = "col">
+                        <div class = "form-group">
+                            <label for = "title">عنوان</label>
+                            <input  type = "text" id = "title" name = "title" class = "form-control inva"
+                                   placeholder = "مانند نام کسب و کار یا نوع نیازمندی" required>
+                            {#{% if(errors.title) %}#}
+                            <div class = "invalid-feedback">
+                                {{ errors.title }}
+                            </div>
+                            {#{% endif %}#}
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <label for = "poster">پوستر</label>
+                        <input type = "file" id = "poster" name = "poster" class = "form-control" required>
+                        <div class = "invalid-feedback">
+                            {{ errors.poster }}
+                        </div>
+                    </div>
+                </div>
+                <div class = "custom-fields" id = "custom-fields">
+
+                </div>
+                <div class = "form-row">
+                    <div class = "col">
+                        <label for = "description">توضیحات مختصر</label>
+                        <textarea name = "description" class = "form-control" id = "description" cols = "10" rows = "6"
+                                  placeholder = "توضیحات بیشتر مانند درباره کسب و کار خدماتی که ارائه می شود" required></textarea>
+                        <div class="invalid-feedback">
+                            فیلد توضیحات نمی تواند خالی باشد
+                        </div>
+                    </div>
+                    <div class = "col">
+                        <label for = "description">اتخاب تصاویر</label>
+                        <div class = "dropzone" id = "myDropzone" name = "image"></div>
+                    </div>
+                </div>
+                <div class = "form-group">
+                    <label for = "address">آدرس</label>
+                    <input type = "text" id = "address" name = "address" class = "form-control"
+                           placeholder = "آدرس دقیق را وارد کنید" required>
+                    <div class="invalid-feedback">
+                        فیلد آدرس نمی تواند خالی بماند
+                    </div>
+                </div>
+                <div class = "form-group text-left">
+                    <br>
+                    <button type = "submit" class = "btn btn-success"> ثبت آگهی</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src = "{{ app.basePath }}scripts/lib/dropzone/dropzone.js"></script>
+    {#<script src = "{{ app.basePath }}scripts/lib/bootstrap/popover.js"></script>#}
+    <script src = "{{ app.basePath }}scripts/lib/bootstrap/bootstrap.js"></script>
+    <script>
+        // Select muliple image width drop zone lib
+        var baseUrl = window.location.pathname.split('/')[1];
+        $('#myDropzone').dropzone({
+            url: "/" + baseUrl + "/advertise/store/y",
+            // autoProcessQueue: false,
+            uploadMultiple: true,
+            acceptedFiles: "image/*",
+            enqueueForUpload: true,
+            parallelUploads: 100,
+            maxFiles: 4,
+            maxFilesize: 4,
+            init: function () {
+//                this.on("addedfile", function(file) { alert("Added file."); });
+                this.on('success', function (file, response) {
+
+                    // If you return JSON as response (with the proper `Content-Type` header
+                    // it will be parsed properly. So lets say you returned:
+                    // `{ "fileName": "my-file-2234.jpg" }`
+
+                    // Create a hidden input to submit to the server:
+
+                    $("#add_advertise_form").append($('<input type="hidden" ' + 'name="images[]" ' + 'value="' + file.name + '">'));
+//                    $("#add_advertise_form #ad_images").val(file.name );
+
+                });
+            }
+        });
+        Dropzone.autoDiscover = false;
+        Dropzone.options.myDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            init: function () {
+                this.on("addedfile", function (file) { alert("Added file."); });
+            }
+        };
+
+
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+{% endblock %}

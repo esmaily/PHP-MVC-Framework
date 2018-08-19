@@ -1,0 +1,15 @@
+{% extends 'master.twig' %}
+{% block body %}
+  {%  for user in users %}
+      {{  user.email }}
+  {% endfor %}
+<form action = "input" method = "post" name = "register" role="form" enctype="multipart/form-data">
+    <h>Register Quick User</h>
+    <hr>
+    <input type = "text" name = "username" title = "username"><br>
+    <input type = "text" name = "password" title = "password"><br>
+    <input type = "file" name = "link" title = "link"><br>
+    <input type = "submit" name = "send" value = "send data">
+</form>
+
+{% endblock %}

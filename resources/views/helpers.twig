@@ -1,0 +1,3 @@
+{% macro partial(partailName,variables={}) %}
+	{% include 'partials/_' ~ partailName  ~ '.twig' with variables %}
+{% endmacro %}

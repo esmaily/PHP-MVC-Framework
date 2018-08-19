@@ -1,0 +1,52 @@
+
+    <div class="page-header">
+        <div class="row">
+            <h6 class="title text-right col-md-2 col-sm-4">نمایش بر اساس :</h6>
+            <form action = "#" name="add-type-notice" class="form-inline col-md-10 col-sm-8">
+
+                <div class="form-row">
+                    <div class="col">
+                        <select name = "type" onchange="__app.sortByCategory(this.value)" class="form-control" title="Please Select Notice">
+                            <option value = "needed">نیازمندی</option>
+                            <option value = "business">کسب و کار</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select name = "business" id = "by-business-plan" class="form-control" title="Please Select business plan">
+                            <option value = "service">خدماتی</option>
+                            <option value = "shoping">فروشگاهی</option>
+                            <option value = "buy-center">مراکز خرید</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    <div class="page-body">
+         {% for item in advertises %}
+             <div class = "adv-item col-lg-3 col-sm-4 col-xs-6 text-center">
+            <div class = "adv-content">
+                <figure class = "adv-poster card-img-top">
+                    <a href = "{{ app.baseUrl }}advertise/show/{{ item.id }}">
+                        <img src = "{{ storage('advertises',item.poster) }}" class = "figure-img img-responsive advertise-poster" alt = "{{ item.title }}">
+                    </a>
+                </figure>
+                <div class = "card-body">
+                    <a href = "{{ app.baseUrl }}advertise/show/{{ item.id }}">
+                        <h5 class = "card-title">{{ item.title }}</h5>
+                    </a>
+                    <p class = "card-text">
+                        {% if(item.type)=='business' %}
+                        <span>کسب و کار</span>
+                        {% else %}
+                            <span>نیازمندی</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+

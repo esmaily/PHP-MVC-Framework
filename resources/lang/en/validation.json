@@ -1,0 +1,20 @@
+{
+  "validator":{
+    "require":"%s is a Required ",
+    "number":"%s is not  Number",
+    "max":"%s Length must be less then %d",
+    "min":"%s Length must be grather then %d",
+    "email":"%s  must be email then %d",
+    "timestamp":"%s must format timestamp  "
+  },
+  "fields":{
+    "id":"ID",
+    "name":"Name",
+    "username":"UserName",
+    "password":"Password",
+    "email":"Email",
+    "level_id":"Levels",
+    "state":"Flag"
+  }
+
+}

@@ -1,0 +1,33 @@
+{% extends 'master.twig' %}
+
+{% import 'helpers.twig' as HP %}
+{% block content %}
+    <!--Start Advertise-->
+    <section class = "advertises clearfix tab-pane">
+        {{ HP.partial('advertis',{app:app,advertises:advertises}) }}
+    </section>
+    <!--End Advertise-->
+
+    <!--Start Business-->
+    <section id = "business" class = "def-section business">
+        {{ HP.partial('business',{app:app}) }}
+    </section>
+    <!--End Business-->
+
+    <!--Start iQ Cart-->
+    <section id = "iq-cart" class = "def-section iq-cart">
+        {{ HP.partial('iq-cart',{app:app}) }}
+    </section>
+    <!--End iQ Cart-->
+
+    <!--Start Service-->
+    <section id = "service" class = "def-section service">
+        {{ HP.partial('service',{app:app}) }}
+    </section>
+    <!--End Service-->
+    <!--Start Contact-us-->
+    <section id = "contact-us" class = "def-section Contact-us">
+        {{ HP.partial('contact-us',{app:app}) }}
+    </section>
+    <!--End Contact-us-->
+{% endblock %}

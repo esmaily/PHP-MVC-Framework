@@ -1,0 +1,31 @@
+{% extends 'master.twig' %}
+
+{% block body %}
+	{% if langs|length > 0 %}
+		<table border="2" style="text-align=center">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>For</th>
+					<th>Version</th>
+				</tr>
+			</thead>
+		<tbody>
+		{% set i =0 %}
+		{% for lang in langs %}
+			{% set i = i +1 %}
+			<tr>
+				<td>{{ i }}</td>
+				<td>{{ lang.name }}</td>
+				<td>{{ lang.for }}</td>
+				<td>{{ lang.version }}</td>
+			</tr>
+			
+		{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p> Langs is Null</p>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /iqoffice-server-side/public
+RewriteCond %{REQUEST_FILE} !-f
+RewriteCond %{REQUEST_FILE} !-d
+RewriteCond %{REQUEST_URI} !/public
+RewriteRule ^(.*)$  index.php?url=$1 [L]

@@ -1,0 +1,12 @@
+{
+
+	"database":{
+		"driver":"mysql",
+		"host":"localhost",
+		"dbname":"iqoffice",
+		"username":"root",
+		"password":"",
+		"charset":"utf8",
+	    "table_prefix":""
+	}
+}

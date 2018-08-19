@@ -1,0 +1,57 @@
+{% import 'helpers.twig' as HP %}
+{% set path = 'http://127.0.0.1/iqoffice-server-side/public' %}
+<!doctype html>
+
+<html lang = "fa">
+<head>
+
+    <meta charset = "UTF-8">
+    <meta name = "viewport"
+          content = "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+    <title>آیکیو آفیس</title>
+    <!--Bootstrap Style And Library Add-->
+    <link rel = "stylesheet" href = "{{ app.basePath }}styles/bootstrap-rtl.min.css">
+    <!--Dropzone Styles-->
+    <link rel = "stylesheet" href = "{{ app.basePath }}scripts/lib/dropzone/dropzone.css">
+    <!--Install Font Awesome-->
+    <link rel = "stylesheet" href = "{{ app.basePath }}fonts/fontawesome/css/all.css">
+    <link rel = "stylesheet" href = "{{ app.basePath }}fonts/fontawesome/css/v4-shims.min.css">
+    <!-- Custom Style -->
+    <link rel = "stylesheet" href = "{{ app.basePath }}styles/style.css">
+</head>
+<body onload="__app.addCustomAdvertise('business')">
+
+<!--Start Warp-->
+<section class = "wrap">
+    <!--Start Header-->
+    <header class = "header">
+        {{ HP.partial('header',{app:app}) }}
+    </header>
+    <!--End Header-->
+
+    <!--Start Content Site-->
+    <main id = "main" class = "main container">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    <!--End Content Site-->
+
+    <!--Start Footer-->
+    <footer class = "footer">
+        {{ HP.partial('footer') }}
+    </footer>
+    <!--End Footer-->
+</section>
+<!--End Warp-->
+
+<!-- Scripts -->
+<script src = "{{ app.basePath }}scripts/lib/jquery.js"></script>
+<script src = "{{ app.basePath }}scripts/script.js"></script>
+{% block scripts %}
+
+{% endblock %}
+
+</body>
+</html>
