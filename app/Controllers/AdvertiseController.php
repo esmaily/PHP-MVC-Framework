@@ -36,9 +36,6 @@ class AdvertiseController extends Controller
 		$advertise->code   = $code;
 		$validate          = $advertise->validate();
 		$errors=Validator::error();
-		dump($errors);
-		dd('end');
-		$validate=FALSE;
 		if ($validate) {
 			if($poster) $request->move('advertises', $poster);
 			$video             = $request->file('video');

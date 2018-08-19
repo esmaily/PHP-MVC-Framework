@@ -322,3 +322,11 @@ body{
     height:50px;
     width: 100%;
 }
+
+.debug{
+    background: #333;
+    color: #eee;
+    padding: 10px;
+    direction: ltr;
+    text-align: left;
+}

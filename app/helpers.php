@@ -6,15 +6,15 @@ use App\Http\Session;
 
 function d ($data = '')
 {
-	echo "<pre style='background: #333;color:#eee;padding:10px;direction: ltr;text-align: left'>";
+	echo "<pre class='debug'>";
 	print_r($data);
 	echo "</pre>";
-	return TRUE;
+
 }
 
 function dd ($data = '')
 {
-	echo "<pre>";
+	echo "<pre class='debug'>";
 	print_r($data);
 	echo "</pre>";
 	die();
@@ -22,10 +22,10 @@ function dd ($data = '')
 
 function dump ($data = '')
 {
-	echo "<pre>";
+	echo "<pre class='debug'>";
 	var_dump($data);
 	echo "</pre>";
-	return TRUE;
+
 }
 
 function clearArray (&$array, $key = '')
