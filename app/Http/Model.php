@@ -127,6 +127,13 @@ class Model
 		$table = self::$_tableName;
 		if ($fields == NULL) {
 			$sql = "SELECT * FROM `{$table}` ORDER BY `id` DESC ";
+		}elseif(is_string($fields))
+		{
+			$sql = "SELECT `$fields` FROM `{$table}` ORDER BY `id` DESC ";
+		}elseif(is_array($fields))
+		{
+			$fields = implode(',',wrapValue($fields));
+			$sql = "SELECT {$fields} FROM `{$table}` ORDER BY `id` DESC ";
 		}
 
 		return Model::query($sql);
