@@ -5,6 +5,11 @@ use App\Http\Exceptions\FoundException;
 use App\Http\Route;
 use App\Http\Session;
 
+function abort ($data = '')
+{
+	new FoundException('abort ',$data);
+}
+
 function d ($data = '')
 {
 	echo "<pre style='background: #333;color: #eee;padding: 10px;direction: ltr;text-align: left;'>";
@@ -13,20 +18,12 @@ function d ($data = '')
 
 }
 
-function dd ($data = '')
-{
-	echo "<pre style='background: #333;color: #eee;padding: 10px;direction: ltr;text-align: left;'>";
-	print_r($data);
-	echo "</pre>";
-	die();
-}
-
 function dump ($data = '')
 {
 	echo "<pre style='background: #333;color: #eee;padding: 10px;direction: ltr;text-align: left;'>";
 	var_dump($data);
 	echo "</pre>";
-
+	die();
 }
 
 function clearArray (&$array, $key = '')
