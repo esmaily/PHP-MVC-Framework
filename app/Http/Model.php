@@ -182,17 +182,10 @@ class Model
 	# Check Valid Fields
 	public function validate ($request,$rules)
 	{
-		d($request);
-		dd($rules);
-		Validator::check($this->getFields(), $this->_rules);
+		Validator::check($request,$rules);
 		$errors=Validator::error();
-		$errorCount=0;
-		foreach($errors as $error)
-		{
-			$error !==TRUE ? $errorCount++ : TRUE;
-		}
 
-		return  $errorCount ===0 ? TRUE  :  FALSE;
+		return  count($errors) === 0 ? TRUE  :  $errors;
 	}
 
 	# Is Object New
