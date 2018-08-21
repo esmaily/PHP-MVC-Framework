@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http;
+
+use App\Http\Exceptions\NotFoundException;
+
 class Route
 {
 
@@ -25,16 +28,9 @@ class Route
 			if (count($params) == 0) {
 				$params[0] = Request::createFromGlobals();
 			}
-
 			$ctrl = new $controllerName();
 
 			if (method_exists($ctrl, $actionName)):
-				//				d([
-				//				'Controller'=>$ctrl,
-				//				'Action'=>$actionName,
-				//				'Params'=>$params
-				//			]);
-				//			func_get_args();
 
 				call_user_func_array([$ctrl, $actionName], $params);
 			else:
@@ -42,7 +38,7 @@ class Route
 			endif;
 
 		} else {
-			echo ' 404: Not found  page !';
+			  new NotFoundException('Route Not Found is day',' 404 ! The Route Not Found');
 		}
 
 	}

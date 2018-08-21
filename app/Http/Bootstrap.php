@@ -4,6 +4,8 @@
 namespace App\Http;
 
 
+use App\Http\Exceptions\FoundException;
+
 class Bootstrap
 {
 
@@ -11,6 +13,7 @@ class Bootstrap
 	public function __construct ()
 	{
 		Session::init();
+		FoundException::init();
 	}
 
 	public function run ()

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Exceptions\FoundException;
 use App\Http\Route;
 use App\Http\Session;
 
@@ -168,4 +169,8 @@ function back ($params = NULL)
 //	dd($params);
 	header("location: " . ENV['BACK']);
 	exit();
+}
+function handler()
+{
+	return (new FoundException)->handler();
 }
