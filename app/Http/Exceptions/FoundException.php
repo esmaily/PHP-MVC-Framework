@@ -8,6 +8,10 @@ class FoundException extends \Exception
 {
 	private static $_typeExceptions;
 	private $_exceptions = [];
+	public function __construct ($title = "",$message='')
+	{
+		print_r($this->templateException($title,$message));
+	}
 
 	public function run ($title, $message)
 	{
@@ -16,7 +20,6 @@ class FoundException extends \Exception
 
 	public static function init ()
 	{
-		;
 		self::$_typeExceptions = [
 			1 => 'Fatal Exception',
 			2 => 'Warning',
