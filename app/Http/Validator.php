@@ -11,29 +11,35 @@ class Validator
 
 	public static function check ($fields, $rules)
 	{
-		d($fields);
-		dd($rules);
+
 		self::$_errorMessages = Language::get('validator');
 		self::$_fieldCaption  = Language::get('fields');
 		self::$_errors        = [];
 		self::$_isError       = [];
 		foreach ($fields as $field => $value) {
 			$rule = $rules[$field];
-			if (strlen($rule) > 0) {
+			$rulePart = explode('|',$rule);
+			if (strlen($rule) > 0 && (in_array('required',$rulePart) || strlen($value) >0)) {
 				$check = self::_checkValid($value, $rules[$field], $field);
 				if (strlen($check) !== 0) {
 					self::$_errors[$field] = $check;
 				}
 			}
 		}
-
 		return self::$_errors;
 	}
 
 	public static function error ()
 	{
-
-		return self::$_errors;
+		$errorMessage=[];
+		foreach(self::$_errors as $key=>$value)
+		{
+			if(strlen($value) !==1)
+			{
+				$errorMessage[$key]=$value;
+			}
+		}
+		return $errorMessage;
 	}
 
 	private static function _checkValid ($value, $rules, $field)
