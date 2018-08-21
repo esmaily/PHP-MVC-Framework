@@ -12,7 +12,6 @@ class FoundException extends \Exception
 	{
 		print_r($this->templateException($title,$message));
 	}
-
 	public function run ($title, $message)
 	{
 		print_r($this->templateException($title, $message));

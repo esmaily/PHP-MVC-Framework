@@ -33,12 +33,14 @@ class AdvertiseController extends Controller
 		$advertise->poster = $poster;
 		$advertise->code   = $code;
 		$validate          = $advertise->validate($request->all(),[
-			'title' =>'required|string|in:3',
+			'title' =>'required|string|min:3',
 			'type' =>'required|string',
 			'poster'=>'required|image|max:2048|mimes:jpg,png,gif',
+			'email'=>'email',
+			'video'=>'mimes:mp4,avi|max:4080',
+			'pod'=>'mimes:mp3|max:400',
 			'code'=>'required'
 		]);
-		$errors=Validator::error();
 		if ($validate) {
 			if($poster) $request->store('advertises', $poster);
 			$video             = $request->file('video');
@@ -53,8 +55,8 @@ class AdvertiseController extends Controller
 					"category"=>$request->post('category'),
 					"media"       => [
 						"images" => $request->post('images'),
-						"videos" => $video,
-						"pods"   => $pod,
+						"video" => $video,
+						"pod"   => $pod,
 					],
 					"contact_us"  => [
 						"website"  => $request->post('website'),
