@@ -38,6 +38,10 @@ class Request
 	public function all ($keys = NULL)
 	{
 		unset($this->_all['url']);
+		foreach ($this->_file as $key=>$value)
+		{
+			$this->_all[$key]=$value['name'];
+		}
 		if (!$keys) {
 			return $this->_all ??  'No Request Input';
 		} elseif (is_string($keys)) {
