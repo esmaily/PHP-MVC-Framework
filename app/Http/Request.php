@@ -37,6 +37,7 @@ class Request
 
 	public function all ($keys = NULL)
 	{
+		unset($this->_all['url']);
 		if (!$keys) {
 			return $this->_all ??  'No Request Input';
 		} elseif (is_string($keys)) {

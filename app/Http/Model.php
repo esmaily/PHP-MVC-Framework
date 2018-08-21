@@ -3,6 +3,8 @@
 namespace App\Http;
 
 
+use App\Http\Exceptions\FoundException;
+
 class Model
 
 {
@@ -10,9 +12,6 @@ class Model
 	protected $_table = NULL;
 	protected $_fields = [];
 	protected $_primaryKey = 'id';
-	private $_readables = [];
-	private $_editables = [];
-	private $_rules = [];
 	private static $_fetchMode = \PDO::FETCH_ASSOC;
 	protected static $_tableName;
 
@@ -180,25 +179,11 @@ class Model
 		return $this->getDatabase()->prepare($query)->execute([$pk => $this->_fields[$pk]]);
 	}
 
-	# Check Fields is Readable Or Writeable
-	protected function setInitialFields ($props)
-	{
-
-		foreach ($props as $key => $conf) {
-			if (is_int($key)) {
-				$key  = $conf;
-				$conf = [];
-			}
-			$this->_readables[$key] = $conf['readable'] ?? TRUE;
-			$this->_editables[$key] = $conf['editable'] ?? TRUE;
-			$this->_rules[$key]     = $conf['rules'] ?? '';
-			$this->_fields[$key]    = $conf['default'] ?? NULL;
-		}
-	}
-
 	# Check Valid Fields
-	public function validate ()
+	public function validate ($request,$rules)
 	{
+		d($request);
+		dd($rules);
 		Validator::check($this->getFields(), $this->_rules);
 		$errors=Validator::error();
 		$errorCount=0;
@@ -239,20 +224,19 @@ class Model
 	# Setter
 	public function __set ($name, $value)
 	{
-		if (in_array($name, array_keys($this->_fields)) && $this->_editables[$name] === TRUE) {
+		if (in_array($name, $this->_fields)) {
 			return $this->_fields[$name] = $value;
 		}
-		throw new \Exception("This Property({$name}) dose not exists or Not Editable ");
+		 new FoundException('Property Error',"This Property({$name}) dose not exists  ");
 	}
 
 	# Getter
 	public function __get ($name)
 	{
-		if (in_array($name, array_keys($this->_fields)) && $this->_readables[$name] === TRUE) {
+		if (in_array($name, $this->_fields) ) {
 			return $this->_fields[$name];
 		}
-		throw new \Exception("This Property({$name}) dose not exists or Not Readable ");
-
+		new FoundException('Property Error',"This Property({$name}) dose not exists  ");
 	}
 
 	# Register Optional func For Work Width Database

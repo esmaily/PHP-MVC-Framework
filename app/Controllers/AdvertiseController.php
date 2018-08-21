@@ -32,7 +32,12 @@ class AdvertiseController extends Controller
 		$advertise->type   = $request->post('type');
 		$advertise->poster = $poster;
 		$advertise->code   = $code;
-		$validate          = $advertise->validate();
+		$validate          = $advertise->validate($request->all(),[
+			'title' =>'required|string|in:3',
+			'type' =>'required|string',
+			'poster'=>'required|image|max:2048|mimes:jpg,png,gif',
+			'code'=>'required'
+		]);
 		$errors=Validator::error();
 		if ($validate) {
 			if($poster) $request->store('advertises', $poster);

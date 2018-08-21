@@ -11,7 +11,8 @@ class Validator
 
 	public static function check ($fields, $rules)
 	{
-
+		d($fields);
+		dd($rules);
 		self::$_errorMessages = Language::get('validator');
 		self::$_fieldCaption  = Language::get('fields');
 		self::$_errors        = [];
