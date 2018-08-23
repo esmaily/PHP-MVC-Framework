@@ -1,7 +1,6 @@
 ## PHP Modern Mvc Framework
-
+Basic framework for develop server-side projects
 #### Design And Develop by : Seyed Jaffar Esmaili 
-
 
 ## Get Started
 ### Step 1
