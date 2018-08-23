@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http;
+namespace App\Core;
 
 
 class Language

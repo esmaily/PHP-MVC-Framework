@@ -4,7 +4,7 @@
 namespace App\Controllers;
 
 
-use App\Http\{
+use App\Core\{
 	Controller, Model, Request
 };
 

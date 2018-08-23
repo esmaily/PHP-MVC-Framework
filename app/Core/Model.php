@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http;
+namespace App\Core;
 
 
-use App\Http\Exceptions\FoundException;
+use App\Core\Exceptions\FoundException;
 
 class Model
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http;
+namespace App\Core;
 
-use App\Http\View;
+use App\Core\View;
 
 class Controller
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Exceptions;
+namespace App\Core\Exceptions;
 
 
 class FoundException extends \Exception

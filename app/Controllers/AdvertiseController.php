@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 use App\{
-	Advertise, Http\Controller, Http\Model, Http\Request, Http\Session, Http\Validator
+	Advertise, Core\Controller, Core\Model, Core\Request, Core\Session, Core\Validator
 };
 
 class AdvertiseController extends Controller

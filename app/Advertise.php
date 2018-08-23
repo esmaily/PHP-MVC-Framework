@@ -3,7 +3,7 @@
 
 namespace App;
 
-use App\Http\Model;
+use App\Core\Model;
 
 class Advertise extends Model
 {
