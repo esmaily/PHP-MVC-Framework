@@ -67,72 +67,7 @@ function strRepeatVal ($var, $arr, $join = '')
 	return implode($join, $array);
 }
 
-# Read Json File Width Key
-function getData ($key = NULL)
-{
-	$data = json_decode(file_get_contents(ENV['DATABASE']), TRUE);
-	switch ($key) {
-		case $key == NULL:
-			return $data;
-			break;
-		case is_string($key):
-			if (array_key_exists($key, $data))
-				return $data[$key];
-			break;
-		case is_array($key) :
-			if (count($key) == 2) {
-				return $data[$key[0]][$key[1]];
-			} elseif (count($key) == 3) {
-				return $data[$key[0]][$key[1]][$key[2]];
-			} elseif (count($key) == 4) {
-				return $data[$key[0]][$key[1]][$key[2]][$key[3]];
-			}
-			break;
-		default:
-			return TRUE;
-	}
-}
 
-# Insert Json File Width Key
-function setData ($key, $val)
-{
-	$data = json_decode(file_get_contents(ENV['DATABASE']), TRUE);
-	switch ($key) {
-		case is_string($key):
-			if (array_key_exists($key, $data))
-				$data[$key] = $val;
-			break;
-		case is_array($key) :
-			if (count($key) == 2) {
-				$data[$key[0]][$key[1]] = $val;
-			} elseif (count($key) == 3) {
-				$data[$key[0]][$key[1]][$key[2]] = $val;
-			} elseif (count($key) == 4) {
-				$data[$key[0]][$key[1]][$key[2]][$key[3]] = $val;
-			}
-			break;
-		default:
-			return TRUE;
-	}
-	$rawData = json_encode($data, TRUE);
-	file_put_contents(ENV['DATABASE'], ' ');
-	file_put_contents(ROOT . 'resources/database.json', $rawData);
-
-	return TRUE;
-}
-
-# Insert Json File Width Key
-function storeData ($key, $val)
-{
-	$data                   = json_decode(file_get_contents(ENV['DATABASE']), TRUE);
-	$data[$key[0]][$key[1]] = $val;
-	$jsonData               = json_encode($data, JSON_PRETTY_PRINT);
-	file_put_contents(ENV['DATABASE'], ' ');
-	header('Content-type: text/html; charset=UTF-8');
-	file_put_contents(ROOT . 'resources/database.json', $jsonData);
-
-	return $data;
-}
 
 # Generate Random Key
 function shuffleKey ()
