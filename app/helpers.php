@@ -7,7 +7,7 @@ use App\Http\Session;
 
 function abort ($data = '')
 {
-	new FoundException('abort ',$data);
+	(new FoundException())->run('Aborted',$data);
 }
 
 function d ($data = '')
