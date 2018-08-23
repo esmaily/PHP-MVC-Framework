@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /iqoffice-server-side/public
+RewriteBase /Php-Mvc-Optimize/public
 RewriteCond %{REQUEST_FILE} !-f
 RewriteCond %{REQUEST_FILE} !-d
 RewriteCond %{REQUEST_URI} !/public
