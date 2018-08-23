@@ -1,9 +1,11 @@
 <?php
-	# Project Routes
-
-
-
-
+/*
+ * 18th National Skills Competition  trade of Web Design And Development
+ * Competitor : Seyed Jaffar Esmaili
+ * GitHub : esmaily
+ * Phone : 09145985243
+ *
+ * */
 use App\Core\Route;
 
 Route::get('/','HomeController@index');
