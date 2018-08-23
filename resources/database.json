@@ -1,256 +1,39 @@
 {
     "business": {
-        "3C3Z6J4NR9WA7A": {
-            "description": "\u062f\u0648\u0631\u0628\u06cc\u0646 \u062f\u0648\u06af\u0627\u0646\u0647 20+8 \u0645\u06af\u0627\u067e\u06cc\u06a9\u0633\u0644 \u0628\u0627 \u06af\u0634\u0648\u062f\u06af\u06cc \u062f\u06cc\u0627\u0641\u0631\u0627\u06af\u0645 \u0647\u0627\u06cc f\/2.0 \u0648 f\/1.8 \u0628\u0631\u0627\u06cc \u062f\u0648\u0631\u0628\u06cc\u0646 \u0627\u0635\u0644\u06cc \u0648 \u06cc\u06a9 \u062f\u0648\u0631\u0628\u06cc\u0646 20 \u0645\u06af\u0627\u067e\u06cc\u06a9\u0633\u0644\u06cc \u0628\u0627 f\/2.0 \u062f\u06cc\u06af\u0631 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0633\u0644\u0641\u06cc \u0642\u0631\u0627\u0631 \u062e\u0648\u0627\u0647\u062f \u06af\u0631\u0641\u062a. \u0628\u0627\u062a\u0631\u06cc \u0634\u06cc\u0627\u0626\u0648\u0645\u06cc \u0645\u06cc 6 \u0627\u06cc\u06a9\u0633 (Xioami Mi 6X) \u0627\u062d\u062a\u0645\u0627\u0644\u0627 2910 \u0645\u06cc\u0644\u06cc \u0622\u0645\u067e\u0631\u06cc \u0628\u0648\u062f\u0647 \u06a9\u0647 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0634\u062e\u0635\u0627\u062a\u060c \u0646\u0647 \u062e\u06cc\u0644\u06cc \u062e\u0648\u0628 \u0648 \u0646\u0647 \u062e\u06cc\u0644\u06cc \u0628\u062f \u0627\u0633",
-            "category": "service",
-            "media": {
-                "images": null,
-                "videos": "5adeb4ef78e1d.mp4",
-                "pods": "bad_audio.mp3"
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "\u0627\u0631\u062f\u0628\u06cc\u0644\u060c\u0645\u06cc\u062f\u0627\u0646 \u06a9\u0634\u0627\u0648\u0631\u0632\u060c\u0627\u0648\u0644 \u0634\u0647\u0631\u06a9 \u0646\u06cc\u0633\u062a\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 19 \u0645\u062a\u0631\u06cc \u06a9\u0648\u0686\u0647 \u0634\u0647\u06cc\u062f \u0633\u062a\u0627\u0631 \u0632\u0627\u062f\u0647",
-                "email": "mahdi@gmail.com",
-                "phone": "09145985243",
-                "home": "0218762476",
-                "telegram": "woohom@"
-            }
-        },
-        "33LZNZMP71L43P": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "AQM9GAQSQJN18R": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "TXQRSQCRUB2KPP": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "UIZNK5H536GAWT": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "ZD2BDMZIYPYK8B": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "COU645MJ7WCHJQ": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "CONQQNQHB33HXV": {
-            "description": "fdsf",
-            "category": "service",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "tehran,vank,blvar packnejad",
-                "email": "",
-                "phone": "091268542549",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "G2K4SF22XDTELX": {
-            "description": "fdsf",
+        "5BQ48M3QAE4ARW": {
+            "description": "ssssssssssssss",
             "category": "shoping",
             "media": {
                 "images": null,
                 "video": null,
                 "pod": null
-            },
-            "contact_us": {
-                "website": "ihome.ir",
-                "address": "sfsdf",
-                "email": "",
-                "phone": "09145985243",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "X86QBV3SF3B6QV": {
-            "description": "ss",
-            "category": "shoping",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "http:\/\/www.remincenter.com",
-                "address": "ss",
-                "email": "ss",
-                "phone": "",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "4Y23O5O63GMPZO": {
-            "description": "",
-            "category": "shoping",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "",
-                "address": "",
-                "email": "cccccc",
-                "phone": "",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "HBNDP53C3JFYUV": {
-            "description": "",
-            "category": "shoping",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "",
-                "address": "",
-                "email": "",
-                "phone": "",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "FPWUYH6OCM7ZYF": {
-            "description": "",
-            "category": "shoping",
-            "media": {
-                "images": null,
-                "video": null,
-                "pod": null
-            },
-            "contact_us": {
-                "website": "",
-                "address": "",
-                "email": "",
-                "phone": "",
-                "home": "",
-                "telegram": ""
-            }
-        },
-        "KQI6C3JDXRHQ23": {
-            "description": "x",
-            "category": "shoping",
-            "media": {
-                "images": null,
-                "video": "30033136_1926338751011442_373406982155010048_n.mp4",
-                "pod": "bad_audio.mp3"
             },
             "contact_us": {
                 "website": "ihome.ir",
                 "address": "tehran,vank,blvar packnejad",
                 "email": "nadia9898@gmail.com",
                 "phone": "09125746384",
-                "home": "04469483184",
-                "telegram": "woohom@"
+                "home": "0218762476",
+                "telegram": ""
+            }
+        },
+        "TMSKN3LHV3DVX3": {
+            "description": "sfsdf",
+            "category": "shoping",
+            "media": {
+                "images": null,
+                "video": null,
+                "pod": null
+            },
+            "contact_us": {
+                "website": "sf",
+                "address": "sdfsd",
+                "email": "jaffar@gmail.com",
+                "phone": "",
+                "home": "",
+                "telegram": ""
             }
         }
     },
-    "needed": {
-        "J2V5F8RAI32O4L": {
-            "description": "\u062f\u0648\u0631\u0628\u06cc\u0646 \u062f\u0648\u06af\u0627\u0646\u0647 20+8 \u0645\u06af\u0627\u067e\u06cc\u06a9\u0633\u0644 \u0628\u0627 \u06af\u0634\u0648\u062f\u06af\u06cc \u062f\u06cc\u0627\u0641\u0631\u0627\u06af\u0645 \u0647\u0627\u06cc f\/2.0 \u0648 f\/1.8 \u0628\u0631\u0627\u06cc \u062f\u0648\u0631\u0628\u06cc\u0646 \u0627\u0635\u0644\u06cc \u0648 \u06cc\u06a9 \u062f\u0648\u0631\u0628\u06cc\u0646 20 \u0645\u06af\u0627\u067e\u06cc\u06a9\u0633\u0644\u06cc \u0628\u0627 f\/2.0 \u062f\u06cc\u06af\u0631 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0633\u0644\u0641\u06cc \u0642\u0631\u0627\u0631 \u062e\u0648\u0627\u0647\u062f \u06af\u0631\u0641\u062a. \u0628\u0627\u062a\u0631\u06cc \u0634\u06cc\u0627\u0626\u0648\u0645\u06cc \u0645\u06cc 6 \u0627\u06cc\u06a9\u0633 (Xioami Mi 6X) \u0627\u062d\u062a\u0645\u0627\u0644\u0627 2910 \u0645\u06cc\u0644\u06cc \u0622\u0645\u067e\u0631\u06cc \u0628\u0648\u062f\u0647 \u06a9\u0647 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0645\u0634\u062e\u0635\u0627\u062a\u060c \u0646\u0647 \u062e\u06cc\u0644\u06cc \u062e\u0648\u0628 \u0648 \u0646\u0647 \u062e\u06cc\u0644\u06cc \u0628\u062f \u0627\u0633",
-            "price": "1800000",
-            "category": "landed",
-            "land": "80",
-            "media": {
-                "images": null
-            },
-            "contact_us": {
-                "address": "\u0627\u0631\u062f\u0628\u06cc\u0644\u060c\u0645\u06cc\u062f\u0627\u0646 \u06a9\u0634\u0627\u0648\u0631\u0632\u060c\u0627\u0648\u0644 \u0634\u0647\u0631\u06a9 \u0646\u06cc\u0633\u062a\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 19 \u0645\u062a\u0631\u06cc \u06a9\u0648\u0686\u0647 \u0634\u0647\u06cc\u062f \u0633\u062a\u0627\u0631 \u0632\u0627\u062f\u0647"
-            }
-        }
-    }
+    "needed": []
 }
