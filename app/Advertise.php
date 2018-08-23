@@ -8,11 +8,11 @@ use App\Http\Model;
 class Advertise extends Model
 {
 
-	protected $_fields =[
+	protected $_fields = [
 		'id',
 		'title',
 		'type',
 		'poster',
-		'code'
+		'code',
 	];
 }

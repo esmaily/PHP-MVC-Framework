@@ -16,7 +16,7 @@ class AdvertiseController extends Controller
 	# Show Advertise by identifier
 	public function showAction ($id)
 	{
-		$advertise = Model::table('advertise')->first($id);
+		$advertise = Model::table('advertise')->find($id);
 		$details   = getData([$advertise['type'], $advertise['code']]);
 
 		$this->render('advertise.show', compact('advertise', 'details'));
@@ -41,6 +41,7 @@ class AdvertiseController extends Controller
 			'pod'=>'mimes:mp3|max:400',
 			'code'=>'required'
 		]);
+		$errors=Validator::error();
 		if ($validate) {
 			if($poster) $request->store('advertises', $poster);
 			$video             = $request->file('video');
@@ -85,7 +86,6 @@ class AdvertiseController extends Controller
 			$this->redirect('/');
 
 		}else{
-
 			$this->render('advertise/create',['errors'=>$errors]);
 		}
 	}
