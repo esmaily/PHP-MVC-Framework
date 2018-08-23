@@ -17,6 +17,8 @@ class Model
 
 	public function __construct ()
 	{
+
+		$this->_fields = array_values($this->_fields);
 		if ($this->_table === NULL) {
 			$this->_table       = Enviroment::get('database')['table_prefix'] . strtolower(str_replace('App\\', '', get_class($this))) . 's';
 			static::$_tableName = $this->_table;
@@ -35,7 +37,6 @@ class Model
 			echo "Database Error " . $Error->getMessage();
 		}
 	}
-
 	# Get Table name as Class
 	public static function table ($tableName)
 	{
@@ -84,12 +85,21 @@ class Model
 	{
 		$pk    = $this->_primaryKey;
 		$query = "SELECT * FROM  `{$this->_table}` WHERE `{$pk}` = :{$pk}";
-		$stmt = $this->getDatabase()->prepare($query);
+		$stmt  = $this->getDatabase()->prepare($query);
 		$stmt->execute([$pk => $key]);
 		$result = $stmt->fetch(self::$_fetchMode);
+		return $this->_convertRowToObject($result);
+	}
 
+	public function find ($key)
+	{
+		$pk    = $this->_primaryKey;
+		$query = "SELECT * FROM  `{$this->_table}` WHERE `{$pk}` = :{$pk}";
+		$stmt  = $this->getDatabase()->prepare($query);
+		$stmt->execute([$pk => $key]);
+		$result = $stmt->fetch(self::$_fetchMode);
 		return $result;
-//		return $this->_convertRowToObject($result);
+
 	}
 
 	# Select as Database width differ Arguments
@@ -126,13 +136,11 @@ class Model
 		$table = self::$_tableName;
 		if ($fields == NULL) {
 			$sql = "SELECT * FROM `{$table}` ORDER BY `id` DESC ";
-		}elseif(is_string($fields))
-		{
+		} elseif (is_string($fields)) {
 			$sql = "SELECT `$fields` FROM `{$table}` ORDER BY `id` DESC ";
-		}elseif(is_array($fields))
-		{
-			$fields = implode(',',wrapValue($fields));
-			$sql = "SELECT {$fields} FROM `{$table}` ORDER BY `id` DESC ";
+		} elseif (is_array($fields)) {
+			$fields = implode(',', wrapValue($fields));
+			$sql    = "SELECT {$fields} FROM `{$table}` ORDER BY `id` DESC ";
 		}
 
 		return Model::query($sql);
@@ -142,26 +150,28 @@ class Model
 	# Save Or Update Record
 	public function save ()
 	{
-
-		if ($this->_isNew() === TRUE) {
-			$keys       = array_keys($this->_fields);
-			$fields     = implode(',', wrapValue($keys));
-			$keysParams = wrapValue($keys, ':', '');
-			$countMarks = implode(',', $keysParams);
-			$query      = "INSERT INTO `{$this->_table}`  ({$fields}) VALUES ({$countMarks})";
-
-		} else {
-			$keys  = $this->_fields;
-			$pkKey = $this->_primaryKey;
-			unset($keys[$pkKey]);
-			$fields = implode(',', wrapValue(array_keys($keys), '`', 'var'));
-			$query  = "UPDATE `{$this->_table}` SET  {$fields} WHERE `{$pkKey}` =:{$pkKey}";
-
-		}
-
-		$result = $this->getDatabase()->prepare($query)->execute($this->_fields);
+		$this->getFields();
+		$keys       = array_keys($this->_fields);
+		$fields     = implode(',', wrapValue($keys));
+		$keysParams = wrapValue($keys, ':', '');
+		$countMarks = implode(',', $keysParams);
+		$query      = "INSERT INTO `{$this->_table}`  ({$fields}) VALUES ({$countMarks})";
+		$result     = $this->getDatabase()->prepare($query)->execute($this->_fields);
 
 		return $result;
+	}
+
+	public function update ()
+	{
+		$this->getFields();
+		$pkKey = $this->_primaryKey;
+//		$this->_checkFields();
+		$keys   = array_keys($this->_fields);
+//		$fields = implode(',', wrapValue($this->_fields, '`', 'var'));
+//		$query  = "UPDATE `{$this->_table}` SET  {$fields} WHERE `{$pkKey}` =:{$pkKey}";
+		d($keys);
+		dump('d');
+		return $this->getDatabase()->prepare($query)->execute($this->_fields);
 	}
 
 	# Get Id From Last Record Insert
@@ -180,56 +190,49 @@ class Model
 	}
 
 	# Check Valid Fields
-	public function validate ($request,$rules)
+	public function validate ($request, $rules)
 	{
-		Validator::check($request,$rules);
-		$errors=Validator::error();
+		Validator::check($request, $rules);
+		$errors = Validator::error();
 
-		return  count($errors) === 0 ? TRUE  :  $errors;
-	}
-
-	# Is Object New
-	private function _isNew ()
-	{
-		return $this->_fields[$this->_primaryKey] === NULL ?: TRUE ;
+		return count($errors) === 0 ? TRUE : FALSE;
 	}
 
 	# Row Into Object
 	private function _convertRowToObject ($resource)
 	{
 		$objects = [];
-		foreach ($resource as $index => $row) {
+		foreach ($resource as $in=>$row) {
 			$className = get_class($this);
 			$object    = new $className;
-			$fields    = array_keys($this->getFields());
-			foreach ($fields as $fieldName) {
-				$object->$fieldName = $row[$fieldName];
-			}
+			$object->$in = $row ;
 			$objects[] = $object;
 		}
 		if (count($objects) == 1) {
 			return $objects[0];
 		}
+		return $object;
 
-		return $objects;
 	}
 
 	# Setter
 	public function __set ($name, $value)
 	{
+		$class = get_class($this);
 		if (in_array($name, $this->_fields)) {
 			return $this->_fields[$name] = $value;
 		}
-		 new FoundException('Property Error',"This Property({$name}) dose not exists  ");
+		(new FoundException)->run('Property Error ', "The Property (<b >{$name}</b>) dose not exists in  <b>{$class}</b> class  ");
 	}
 
 	# Getter
 	public function __get ($name)
 	{
-		if (in_array($name, $this->_fields) ) {
+
+		if (in_array($name, $this->_fields)) {
 			return $this->_fields[$name];
 		}
-		new FoundException('Property Error',"This Property({$name}) dose not exists  ");
+		(new FoundException)->run('Property Error', "The Property({$name}) dose not exists  ");
 	}
 
 	# Register Optional func For Work Width Database
@@ -270,7 +273,14 @@ class Model
 	# Return Fields
 	public function getFields ()
 	{
-		return $this->_fields;
+		$fields=[];
+		foreach ($this->_fields as $key => $val) {
+			if (is_int($key)) {
+				unset($this->_fields[$key]);
+			}
+			$fields[$key]=$val;
+		}
+		return $fields;
 	}
 
 	# Return Database
