@@ -17,7 +17,7 @@ class Validator
 		self::$_errors        = [];
 		self::$_isError       = [];
 		foreach ($fields as $field => $value) {
-			$rule = $rules[$field];
+			$rule = in_array($field,array_keys($rules)) ? $rules[$field] : FALSE;
 			$rulePart = explode('|',$rule);
 			if (strlen($rule) > 0 && (in_array('required',$rulePart) || strlen($value) >0)) {
 				$check = self::_checkValid($value, $rules[$field], $field);
@@ -56,6 +56,7 @@ class Validator
 			array_unshift($ruleParts, $value);
 			array_unshift($ruleParts, $field);
 			$error = call_user_func_array([$className, $ruleFunc], $ruleParts);
+
 			if ($error !== TRUE && !in_array($field, self::$_isError)) {
 				self::$_isError[] = $field;
 				return $error;
