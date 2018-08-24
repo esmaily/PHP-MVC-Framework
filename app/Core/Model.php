@@ -174,7 +174,7 @@ class Model
 
 	}
 
-	# Save Or Update Record
+	# Save New Record
 	public function save ()
 	{
 		$this->getFields();
@@ -187,7 +187,7 @@ class Model
 
 		return $result;
 	}
-
+	# Update Record
 	public function update ()
 	{
 
@@ -248,6 +248,7 @@ class Model
 
 	}
 
+	# Get Table Of CallBack Class
 	private function tableOfModel ()
 	{
 		$class = get_called_class();
