@@ -22,7 +22,7 @@ class FoundException extends \Exception
 			4 => 'Parse Exception ',
 			8 => 'Notice',
 		];
-//		ini_set('display_errors', 0);
+		ini_set('display_errors', 0);
 		error_reporting(E_ALL);
 		register_shutdown_function('handler');
 	}
