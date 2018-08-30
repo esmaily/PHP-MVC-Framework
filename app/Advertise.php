@@ -17,8 +17,6 @@ class Advertise extends Model
 //	protected $_table='tableName'
 //	protected $_primaryKey='tablePrimaryKey'
 
-
-
 	protected $_fields = [
 		'id',
 		'title',

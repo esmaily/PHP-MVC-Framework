@@ -11,8 +11,6 @@
 use App\Core\Route;
 
 
-
-
 Route::get('/','HomeController@index');
 Route::get('advertise/add','AdvertiseController@create');
 Route::get('advertise/show/{id}','AdvertiseController@show');
