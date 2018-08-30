@@ -3,7 +3,7 @@
  * 18th National Skills Competition  trade of Web Design And Development
  * Competitor : Seyed Jaffar Esmaili
  * GitHub : esmaily
- * Phone : 09145985243
+ * Email : jaffar9898@gmail.com
  *
  * */
 namespace App\Core;
