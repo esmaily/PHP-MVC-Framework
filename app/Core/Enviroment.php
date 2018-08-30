@@ -8,6 +8,8 @@
  * */
 namespace App\Core;
 
+use App\Core\Exceptions\FoundException;
+
 class Enviroment{
 
 	private static $_config;
@@ -21,7 +23,7 @@ class Enviroment{
 				return self::$_config[$path];
 			}
 			else{
-				throw new \Exception("Enviroment Error Load Object({$path})", 1);
+				(new FoundException())->run("Environment Error","Enviroment Load Error Object({$path})");
 			}
 	}
 }
