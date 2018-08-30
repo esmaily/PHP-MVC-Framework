@@ -2,10 +2,10 @@
 
 	"database":{
 		"driver":"mysql",
-		"host":"localhost",
-		"dbname":"iqoffice",
-		"username":"root",
-		"password":"",
+		"host":"YOUR_HOST",
+		"dbname":"DATABASE_NAME",
+		"username":"USER_NAME",
+		"password":"SECRET",
 		"charset":"utf8",
 	    "table_prefix":""
 	}
