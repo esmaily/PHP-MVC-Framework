@@ -9,6 +9,7 @@
 
 namespace App\Core;
 
+use App\Core\Exceptions\FoundException;
 use App\Core\Exceptions\NotFoundException;
 
 class Route
@@ -41,11 +42,11 @@ class Route
 
 				call_user_func_array([$ctrl, $actionName], $params);
 			else:
-				echo 'this method dost not exists';
+				(new FoundException())->run('404 : Action Not  Error','404 ! This Action Not Found ):');
 			endif;
 
 		} else {
-			  new NotFoundException('Route Not Found is day',' 404 ! The Route Not Found');
+			(new FoundException())->run('404 : Route Not Found Error','404 ! This Route Not Found ):');
 		}
 
 	}
