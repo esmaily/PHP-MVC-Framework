@@ -37,10 +37,11 @@ class Model
 	{
 		$database = Enviroment::get('database');
 		$Dsn      = "{$database['driver']}:host={$database['host']};dbname={$database['dbname']};charset={$database['charset']}";
+
 		try {
 			$this->_database = new Database($Dsn, $database['username'], $database['password']);
 		} catch (\PDOException $Error) {
-			echo "Database Error " . $Error->getMessage();
+			(new FoundException())->run('Database Connection Error',$Error->getMessage(),'.env');
 		}
 	}
 
