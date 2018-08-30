@@ -26,6 +26,7 @@ class Controller
 		 View::render($viewPath, $data);
 	}
 
+	# Redirect Custom Url
 	protected function redirect ($route, $params = NULL)
 	{
 		$this->viewBag = $params ??  $this->viewBag;
