@@ -58,8 +58,8 @@ class FoundException extends \Exception
 		$message   .= "<span style='font-size: 20px;color:{$type};text-transform: capitalize;'>{$title}";
 		$message   .= "</span></h3></div>";
 		$message   .= "<div class='body' style='padding:10px 4%;background: #fff;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px'>";
-		$message   .= "<p style='font-size: 18px;color: #333;'><span style='text-transform: capitalize;font-weight: bolder'>File : </span>{$file}</p>";
-		$message   .= "<p style='font-size: 18px;color: #333;'><span style='text-transform: capitalize;font-weight: bolder'>In Line : </span>{$line}</p>";
+		$file !=null ? $message   .= "<p style='font-size: 18px;color: #333;'><span style='text-transform: capitalize;font-weight: bolder'>File : </span>{$file}</p>" : FALSE;
+		$line !=null ? $message   .= "<p style='font-size: 18px;color: #333;'><span style='text-transform: capitalize;font-weight: bolder'>In Line : </span>{$line}</p>" : FALSE;
 		$message   .= "<p style='text-transform: capitalize;font-size: 18px;color: #333;'><span style='text-transform: capitalize;font-weight: bolder'>Message : </span>{$exception}</p>";
 		$message   .= "</div>";
 		$message   .= "</div></div></body>";
