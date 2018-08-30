@@ -125,7 +125,6 @@ class Validator
 	{
 		$field = self::$_fieldCaption[$field];
 		$error = self::_getError('email', [$field]);
-		$error = self::_getError('required', [$field]);
 
 		return (!filter_var($value, FILTER_VALIDATE_EMAIL)) ? $error : TRUE;
 
