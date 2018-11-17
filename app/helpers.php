@@ -42,6 +42,7 @@ function clearArray (&$array, $key = '')
 	$array = $ret;
 }
 
+# sticky values
 function wrapValue ($var, $wrapStart = '`', $wrapEnd = NULL)
 {
 	if ($wrapEnd === NULL) {
@@ -72,9 +73,6 @@ function strRepeatVal ($var, $arr, $join = '')
 
 	return implode($join, $array);
 }
-
-
-
 # Generate Random Key
 function shuffleKey ()
 {
@@ -86,7 +84,6 @@ function shuffleKey ()
 
 	return $key;
 }
-
 # Redirect to
 function redirect ($route, $params = NULL)
 {
@@ -101,6 +98,7 @@ function redirect ($route, $params = NULL)
 	}
 }
 
+# return back page
 function back ($params = NULL)
 {
 	Session::set('bag', $params);
@@ -108,6 +106,7 @@ function back ($params = NULL)
 	header("location: " . ENV['BACK']);
 	exit();
 }
+
 function handler()
 {
 	return (new FoundException)->handler();
